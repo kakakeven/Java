@@ -7,62 +7,62 @@ package Sorts;
  */
 public class SelectionSort implements SortAlgorithm {
 
-  /**
-   * This method swaps the two elements in the array
-   *
-   * @param <T>
-   * @param arr, i, j The array for the swap and the indexes of the to-swap elements
-   */
-  public <T> void swap(T[] arr, int i, int j) {
-    T temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
-  }
-
-  /**
-   * This method implements the Generic Selection Sort
-   *
-   * @param arr The array to be sorted Sorts the array in increasing order
-   */
-  @Override
-  public <T extends Comparable<T>> T[] sort(T[] arr) {
-    int n = arr.length;
-    for (int i = 0; i < n - 1; i++) {
-      // Initial index of min
-      int min = i;
-
-      for (int j = i + 1; j < n; j++) {
-        if (arr[min].compareTo(arr[j]) < 0) {
-          min = j;
-        }
-      }
-
-      // Swapping if index of min is changed
-      if (min != i) {
-        swap(arr, i, min);
-      }
+    /**
+     * This method swaps the two elements in the array
+     *
+     * @param <T>
+     * @param arr, i, j The array for the swap and the indexes of the to-swap elements
+     */
+    public <T> void swap(T[] arr, int i, int j) {
+        T temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 
-    return arr;
-  }
+    /**
+     * This method implements the Generic Selection Sort
+     *
+     * @param arr The array to be sorted Sorts the array in increasing order
+     */
+    @Override
+    public <T extends Comparable<T>> T[] sort(T[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            // Initial index of min
+            int min = i;
 
-  // Driver Program
-  public static void main(String[] args) {
+            for (int j = i + 1; j < n; j++) {
+                if (arr[min].compareTo(arr[j]) < 0) {
+                    min = j;
+                }
+            }
 
-    Integer[] arr = {4, 23, 6, 78, 1, 54, 231, 9, 12};
+            // Swapping if index of min is changed
+            if (min != i) {
+                swap(arr, i, min);
+            }
+        }
 
-    SelectionSort selectionSort = new SelectionSort();
+        return arr;
+    }
 
-    Integer[] sorted = selectionSort.sort(arr);
+    // Driver Program
+    public static void main(String[] args) {
 
-    // Output => 1	  4	 6	9	12	23	54	78	231
-    SortUtils.print(sorted);
+        Integer[] arr = {4, 23, 6, 78, 1, 54, 231, 9, 12};
 
-    // String Input
-    String[] strings = {"c", "a", "e", "b", "d"};
-    String[] sortedStrings = selectionSort.sort(strings);
+        SelectionSort selectionSort = new SelectionSort();
 
-    // Output => a	b	 c  d	e
-    SortUtils.print(sortedStrings);
-  }
+        Integer[] sorted = selectionSort.sort(arr);
+
+        // Output => 1	  4	 6	9	12	23	54	78	231
+        SortUtils.print(sorted);
+
+        // String Input
+        String[] strings = {"c", "a", "e", "b", "d"};
+        String[] sortedStrings = selectionSort.sort(strings);
+
+        // Output => a	b	 c  d	e
+        SortUtils.print(sortedStrings);
+    }
 }
